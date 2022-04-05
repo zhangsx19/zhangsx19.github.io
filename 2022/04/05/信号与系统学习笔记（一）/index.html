@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>信号与系统学习笔记（一） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一、LTI系统时域分析 LTI系统定义:$$T(\sum_{k&#x3D;k_1}^{k_2} a_kx_k(t-t_k))&#x3D; \sum_{k&#x3D;k_1}^{k_2} a_ky_k(t-t_k)$$  卷积：设某系统冲激响应为$h(t)$,即$\delta(t)\Rightarrow h(t)$    $f(t)*T(\delta(t))&#x3D;T(f(t))$，看作f(t)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="信号与系统学习笔记（一）">
+<meta property="og:url" content="http://example.com/2022/04/05/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一、LTI系统时域分析 LTI系统定义:$$T(\sum_{k&#x3D;k_1}^{k_2} a_kx_k(t-t_k))&#x3D; \sum_{k&#x3D;k_1}^{k_2} a_ky_k(t-t_k)$$  卷积：设某系统冲激响应为$h(t)$,即$\delta(t)\Rightarrow h(t)$    $f(t)*T(\delta(t))&#x3D;T(f(t))$，看作f(t)">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405004425.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405004738.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogsbe2f0ca34be3b6006443b43005e458a.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405012114.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogsf0fdf172ac15d0e36e2006bdd80a37a.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405135702.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405143214.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405145155.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405143921.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogsfc3cfe278c4f8276e110e6041c2865c.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405214002.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs38ee03c7b886fdcef9aad2a10b92634.jpg">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogsd738cb0e16eae967c4d473847f00da5.jpg">
+<meta property="article:published_time" content="2022-04-04T16:08:06.000Z">
+<meta property="article:modified_time" content="2022-04-05T14:13:22.181Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405004425.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-信号与系统学习笔记（一）" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/05/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
+  <time class="dt-published" datetime="2022-04-04T16:08:06.000Z" itemprop="datePublished">2022-04-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      信号与系统学习笔记（一）
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="一、LTI系统时域分析"><a href="#一、LTI系统时域分析" class="headerlink" title="一、LTI系统时域分析"></a>一、LTI系统时域分析</h1><ul>
+<li><p>LTI系统定义:<br>$$T(\sum_{k&#x3D;k_1}^{k_2} a_kx_k(t-t_k))&#x3D; \sum_{k&#x3D;k_1}^{k_2} a_ky_k(t-t_k)$$</p>
+</li>
+<li><p>卷积：设某系统冲激响应为$h(t)$,即$\delta(t)\Rightarrow h(t)$</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405004425.png" alt="20220405004425"></p>
+<p>$f(t)*T(\delta(t))&#x3D;T(f(t))$，看作f(t)经过了系统h(t),系统冲激响应为$T(\delta(t))$。$u(t)$为$\delta(t)$经过积分器</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405004738.png" alt="20220405004738"></p>
+<ul>
+<li><p>因果性：系统输出只与输入的当前值和以前值有关，充要条件<br>$$h(t)&#x3D;h(t)u(t)$$<br>$$y(t)&#x3D;\int_0^\infty h(\tau)x(t-\tau)d\tau$$<br>因$\tau&gt;0$，所以$x(t-\tau)$只用到了x(t)之前的值</p>
+</li>
+<li><p>记忆系统：输出与输入过去值有关</p>
+</li>
+</ul>
+<p>$x_1(t)&#x3D;cosw_0t,x_2(t)&#x3D;e^{-t},y_1(t)&#x3D;x’(t),y_2(t)&#x3D;x^2(t)$</p>
+<ul>
+<li>流图表示：子系统对调</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogsbe2f0ca34be3b6006443b43005e458a.jpg" alt="be2f0ca34be3b6006443b43005e458a"></p>
+<h1 id="二、LTI特征分析"><a href="#二、LTI特征分析" class="headerlink" title="二、LTI特征分析"></a>二、LTI特征分析</h1><ul>
+<li><p>CNN : $x[n]*h[-n]$,边缘补零，计算反向传播时可用卷积的思想</p>
+</li>
+<li><p>矩阵特征值与特征向量：<br>$$A\vec{x}&#x3D;λ\vec{x}$$<br>把A看作某种对x的几何变换，若A对x有作用不变性，则x为A的特征向量，对应系数为特征值。</p>
+</li>
+<li><p>系统特征值与特征函数：<br>$$T(s(u))&#x3D;λs(u)$$<br>s(u)&#x2F;T可看作无穷维向量&#x2F;矩阵</p>
+</li>
+<li><p>LTI系统特征值与特征函数：<br>$$y(t)&#x3D;e^{jwt}\int_{-\infty}^{\infty} h(\tau)e^{-jw\tau}d\tau&#x3D;e^{jwt}H(w)$$<br>$s(t)&#x3D;e^{jwt}是任意LTI系统的特征函数，H(w)为对应系统的特征值$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405012114.png" alt="20220405012114"></p>
+<p>复指数表示$e^{jwt}$是真正的单频率信号，而cos和sin在频谱上都有两条谱线，所以只有傅里叶变换才能用于信号成分分析，才有明确的物理意义,是无可替代的。</p>
+<p>$e^{st}$是一般意义的LTI特征函数，s&#x3D;a+jw可表示任何复数，而傅里叶的s只能表示纯虚数(系数不同)，H(s)为特征值。是更复杂的信号，但不是有确定物理意义的单频信号，所以Laplace变换在做系统变换时比傅里叶变换有更广泛的性质，但不能用于信号成分分析。</p>
+</li>
+</ul>
+<h1 id="三、傅里叶级数"><a href="#三、傅里叶级数" class="headerlink" title="三、傅里叶级数"></a>三、傅里叶级数</h1><ul>
+<li><p>$L^2[t_0,t_a]$上的完备正交基：<br>$$f(t)&#x3D;\sum_{n&#x3D;-\infty}^{\infty} c_n\varphi_n(t)$$<br>$$&lt;f(t),\varphi_k(t)&gt;&#x3D;\sum_{n&#x3D;-\infty}^{\infty} c_n&lt;\varphi(t),\varphi_k(t)&gt;&#x3D;c_k&lt;\varphi_k(t),\varphi_k(t)&gt;$$</p>
+</li>
+<li><p>三角形式傅里叶级数<br>正交基：$$\frac{1}{\sqrt{2}},coswt,sinwt,…,cosnwt,sinnwt$$<br>$$&lt;\varphi_k(t),\varphi_k(t)&gt;&#x3D;\frac{T}{2}$$</p>
+</li>
+<li><p>指数形式傅里叶级数<br>正交基：{e^{jnwt}}<br>$$&lt;\phi_n(t),\phi_n(t)&gt;&#x3D;&lt;e^{jnwt},e^{jnwt}&gt;&#x3D;T$$</p>
+</li>
+<li><p>周期延拓<br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogsf0fdf172ac15d0e36e2006bdd80a37a.jpg" alt="f0fdf172ac15d0e36e2006bdd80a37a"></p>
+</li>
+</ul>
+<h1 id="四、傅里叶变换"><a href="#四、傅里叶变换" class="headerlink" title="四、傅里叶变换"></a>四、傅里叶变换</h1><ul>
+<li>加窗<br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405135702.png" alt="20220405135702"></li>
+</ul>
+<p>$Sa(\frac{wT}{2})&#x3D;\frac{sin\frac{wT}{2}}{\frac{wT}{2}}$主瓣是$\frac{2\pi}{T}$ –第一个过零点</p>
+<p>峰值点在$w_0$和$-w_0$位置，可用于谱分析</p>
+<p>局限：有限长的窗带来的频率分辨率问题</p>
+<p>如果$\frac{2\pi}{T}&lt;&lt;w_0$,即矩形里包含了$cosw_0t$的很多周期，$T\rightarrow\infty$时Sa趋向冲击，没问题。但主瓣有宽度，如果信号有两个正弦分量$w_0$和$w_1$，如果$w_0$和$w_1$的距离小于主瓣宽度，两个Sa的主瓣会重合，叠加成一个Sa,可能只在$w_0$和$w_1$中间出现一个峰值，这时就无法分辨出两个频率。</p>
+<p>为了解决这个问题，要求窗长尽可能大，分辨率才好。</p>
+<ul>
+<li>周期信号的傅里叶变换<br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405143214.png" alt="20220405143214"></li>
+</ul>
+<p>周期信号本来是没有傅里叶变换的,($f(t)\notin L^1(-\infty,\infty)$)。但可以通过主周期得到主周期的傅里叶变换，再得到F级数的系数与主周期的F变换的关系，从而得到完整周期的F变换。其傅里叶变换是一系列冲激串。</p>
+<p>–F级数是F变换的特例</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405145155.png" alt="20220405145155"><br>只有有限长信号或其延拓成的周期信号才有傅里叶级数，$F_n$表明在某个频点有确定的信号强度，信号强度的密度对应着冲激，即傅里叶变换。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405143921.png" alt="20220405143921"></p>
+<ul>
+<li>高斯对高斯，冲激对冲激<br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogsfc3cfe278c4f8276e110e6041c2865c.jpg" alt="fc3cfe278c4f8276e110e6041c2865c"></li>
+</ul>
+<h1 id="五、离散信号傅里叶变换"><a href="#五、离散信号傅里叶变换" class="headerlink" title="五、离散信号傅里叶变换"></a>五、离散信号傅里叶变换</h1><ul>
+<li>离散信号的频率<br>在离散信号中，w和$w+2\pi k$不可区分，因为只看离散点n(整数)的值而非连续的t，如$sin((2\pi k+w)n+\phi)&#x3D;sin(wn+\phi)$。所以角频率主值取$[-\pi,\pi]$或$[0,2\pi]$</li>
+</ul>
+<p>注意，在离散信号中，$\pi$为最高频，0和$2\pi$为最低频。(0和$2\pi$不可区分)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405214002.png" alt="20220405214002"></p>
+<ul>
+<li>正弦离散信号的周期<br>$x[n]&#x3D;cos(w_0n+\phi)$,令$x[n+N]&#x3D;x[n]$，则周期$N&#x3D;\frac{2\pi}{w_0}k$,k取令N为整数的最小整数</li>
+</ul>
+<p>注意：角频率越大，周期越小的结论不再成立</p>
+<p>以N为周期的离散信号中，可区分的正弦频率数目只有N个</p>
+<p>$$w_k&#x3D;\frac{2\pi}{N}k,k&#x3D;0,1,…,N-1$$</p>
+<ul>
+<li>离散信号的傅里叶级数DFS</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs38ee03c7b886fdcef9aad2a10b92634.jpg" alt="38ee03c7b886fdcef9aad2a10b92634"><br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogsd738cb0e16eae967c4d473847f00da5.jpg" alt="d738cb0e16eae967c4d473847f00da5"></p>
+<ul>
+<li>DTFT</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2022/04/05/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" data-id="cl1m826f90001csu7gpnf6j3c" data-title="信号与系统学习笔记（一）" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2022/04/04/%E7%94%A8HEXO%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">用HEXO从零开始搭建个人博客</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">April 2022</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/04/05/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">信号与系统学习笔记（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/04/%E7%94%A8HEXO%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">用HEXO从零开始搭建个人博客</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/04/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2022 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
