@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>信号与系统学习笔记（一） - Hexo</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Hexo"><meta name="msapplication-TileImage" content="/img/mylogo.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Hexo"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="一、LTI系统时域分析 LTI系统定义:$$T(\sum_{k&amp;#x3D;k_1}^{k_2} a_kx_k(t-t_k))&amp;#x3D; \sum_{k&amp;#x3D;k_1}^{k_2} a_ky_k(t-t_k)$$  卷积：设某系统冲激响应为$h(t)$,即$\delta(t)\Rightarrow h(t)$    $f(t)*T(\delta(t))&amp;#x3D;T(f(t))$，看作f(t)"><meta property="og:type" content="blog"><meta property="og:title" content="信号与系统学习笔记（一）"><meta property="og:url" content="https://sx-zhang.top/2022/04/05/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="一、LTI系统时域分析 LTI系统定义:$$T(\sum_{k&amp;#x3D;k_1}^{k_2} a_kx_k(t-t_k))&amp;#x3D; \sum_{k&amp;#x3D;k_1}^{k_2} a_ky_k(t-t_k)$$  卷积：设某系统冲激响应为$h(t)$,即$\delta(t)\Rightarrow h(t)$    $f(t)*T(\delta(t))&amp;#x3D;T(f(t))$，看作f(t)"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220409015209.png"><meta property="article:published_time" content="2022-04-04T16:08:06.000Z"><meta property="article:modified_time" content="2022-04-08T17:54:40.231Z"><meta property="article:author" content="Shixuan Zhang"><meta property="article:tag" content="Signal and System"><meta property="article:tag" content="FFT"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220409015209.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://sx-zhang.top/2022/04/05/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"},"headline":"信号与系统学习笔记（一）","image":["https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220409015209.png"],"datePublished":"2022-04-04T16:08:06.000Z","dateModified":"2022-04-08T17:54:40.231Z","author":{"@type":"Person","name":"Shixuan Zhang"},"publisher":{"@type":"Organization","name":"Hexo","logo":{"@type":"ImageObject","url":"https://sx-zhang.top/img/mylogo.jpg"}},"description":"一、LTI系统时域分析 LTI系统定义:$$T(\\sum_{k&#x3D;k_1}^{k_2} a_kx_k(t-t_k))&#x3D; \\sum_{k&#x3D;k_1}^{k_2} a_ky_k(t-t_k)$$  卷积：设某系统冲激响应为$h(t)$,即$\\delta(t)\\Rightarrow h(t)$    $f(t)*T(\\delta(t))&#x3D;T(f(t))$，看作f(t)"}</script><link rel="canonical" href="https://sx-zhang.top/2022/04/05/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/"><link rel="icon" href="/img/mylogo.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><meta name="generator" content="Hexo 6.1.0"></head><body class="is-1-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/mylogo.jpg" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">文章</a><a class="navbar-item" href="/categories">目录</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/zhangsx19"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-12"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220409015209.png" alt="信号与系统学习笔记（一）"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-04T16:08:06.000Z" title="2022/4/5 00:08:06">2022-04-05</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-04-08T17:54:40.231Z" title="2022/4/9 01:54:40">2022-04-09</time></span><span class="level-item"><a class="link-muted" href="/categories/EE/">EE</a><span> / </span><a class="link-muted" href="/categories/EE/Signal-and-System/">Signal and System</a></span><span class="level-item">10 minutes read (About 1483 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">信号与系统学习笔记（一）</h1><div class="content"><h1 id="一、LTI系统时域分析"><a href="#一、LTI系统时域分析" class="headerlink" title="一、LTI系统时域分析"></a>一、LTI系统时域分析</h1><ul>
+<li><p>LTI系统定义:<br>$$T(\sum_{k&#x3D;k_1}^{k_2} a_kx_k(t-t_k))&#x3D; \sum_{k&#x3D;k_1}^{k_2} a_ky_k(t-t_k)$$</p>
+</li>
+<li><p>卷积：设某系统冲激响应为$h(t)$,即$\delta(t)\Rightarrow h(t)$</p>
+</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405004425.png" alt="20220405004425"></p>
+<p>$f(t)*T(\delta(t))&#x3D;T(f(t))$，看作f(t)经过了系统h(t),系统冲激响应为$T(\delta(t))$。$u(t)$为$\delta(t)$经过积分器</p>
+<span id="more"></span>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405004738.png" alt="20220405004738"></p>
+<ul>
+<li><p>因果性：系统输出只与输入的当前值和以前值有关，充要条件<br>$$h(t)&#x3D;h(t)u(t)$$<br>$$y(t)&#x3D;\int_0^\infty h(\tau)x(t-\tau)d\tau$$<br>因$\tau&gt;0$，所以$x(t-\tau)$只用到了x(t)之前的值</p>
+</li>
+<li><p>记忆系统：输出与输入过去值有关</p>
+</li>
+</ul>
+<p>$x_1(t)&#x3D;cosw_0t,x_2(t)&#x3D;e^{-t},y_1(t)&#x3D;x’(t),y_2(t)&#x3D;x^2(t)$</p>
+<ul>
+<li>流图表示：子系统对调</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogsbe2f0ca34be3b6006443b43005e458a.jpg" alt="be2f0ca34be3b6006443b43005e458a"></p>
+<h1 id="二、LTI特征分析"><a href="#二、LTI特征分析" class="headerlink" title="二、LTI特征分析"></a>二、LTI特征分析</h1><ul>
+<li><p>CNN : $x[n]*h[-n]$,边缘补零，计算反向传播时可用卷积的思想</p>
+</li>
+<li><p>矩阵特征值与特征向量：<br>$$A\vec{x}&#x3D;λ\vec{x}$$<br>把A看作某种对x的几何变换，若A对x有作用不变性，则x为A的特征向量，对应系数为特征值。</p>
+</li>
+<li><p>系统特征值与特征函数：<br>$$T(s(u))&#x3D;λs(u)$$<br>s(u)&#x2F;T可看作无穷维向量&#x2F;矩阵</p>
+</li>
+<li><p>LTI系统特征值与特征函数：<br>$$y(t)&#x3D;e^{jwt}\int_{-\infty}^{\infty} h(\tau)e^{-jw\tau}d\tau&#x3D;e^{jwt}H(w)$$<br>$s(t)&#x3D;e^{jwt}是任意LTI系统的特征函数，H(w)为对应系统的特征值$</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405012114.png" alt="20220405012114"></p>
+<p>复指数表示$e^{jwt}$是真正的单频率信号，而cos和sin在频谱上都有两条谱线，所以只有傅里叶变换才能用于信号成分分析，才有明确的物理意义,是无可替代的。</p>
+<p>$e^{st}$是一般意义的LTI特征函数，s&#x3D;a+jw可表示任何复数，而傅里叶的s只能表示纯虚数(系数不同)，H(s)为特征值。是更复杂的信号，但不是有确定物理意义的单频信号，所以Laplace变换在做系统变换时比傅里叶变换有更广泛的性质，但不能用于信号成分分析。</p>
+</li>
+</ul>
+<h1 id="三、傅里叶级数"><a href="#三、傅里叶级数" class="headerlink" title="三、傅里叶级数"></a>三、傅里叶级数</h1><ul>
+<li><p>$L^2[t_0,t_a]$上的完备正交基：<br>$$f(t)&#x3D;\sum_{n&#x3D;-\infty}^{\infty} c_n\varphi_n(t)$$<br>$$&lt;f(t),\varphi_k(t)&gt;&#x3D;\sum_{n&#x3D;-\infty}^{\infty} c_n&lt;\varphi(t),\varphi_k(t)&gt;&#x3D;c_k&lt;\varphi_k(t),\varphi_k(t)&gt;$$</p>
+</li>
+<li><p>三角形式傅里叶级数<br>正交基：$$\frac{1}{\sqrt{2}},coswt,sinwt,…,cosnwt,sinnwt$$<br>$$&lt;\varphi_k(t),\varphi_k(t)&gt;&#x3D;\frac{T}{2}$$</p>
+</li>
+<li><p>指数形式傅里叶级数<br>正交基：{e^{jnwt}}<br>$$&lt;\phi_n(t),\phi_n(t)&gt;&#x3D;&lt;e^{jnwt},e^{jnwt}&gt;&#x3D;T$$</p>
+</li>
+<li><p>周期延拓<br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogsf0fdf172ac15d0e36e2006bdd80a37a.jpg" alt="f0fdf172ac15d0e36e2006bdd80a37a"></p>
+</li>
+</ul>
+<h1 id="四、傅里叶变换"><a href="#四、傅里叶变换" class="headerlink" title="四、傅里叶变换"></a>四、傅里叶变换</h1><ul>
+<li>加窗<br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405135702.png" alt="20220405135702"></li>
+</ul>
+<p>$Sa(\frac{wT}{2})&#x3D;\frac{sin\frac{wT}{2}}{\frac{wT}{2}}$主瓣是$\frac{2\pi}{T}$ –第一个过零点</p>
+<p>峰值点在$w_0$和$-w_0$位置，可用于谱分析</p>
+<p>局限：有限长的窗带来的频率分辨率问题</p>
+<p>如果$\frac{2\pi}{T}&lt;&lt;w_0$,即矩形里包含了$cosw_0t$的很多周期，$T\rightarrow\infty$时Sa趋向冲击，没问题。但主瓣有宽度，如果信号有两个正弦分量$w_0$和$w_1$，如果$w_0$和$w_1$的距离小于主瓣宽度，两个Sa的主瓣会重合，叠加成一个Sa,可能只在$w_0$和$w_1$中间出现一个峰值，这时就无法分辨出两个频率。</p>
+<p>为了解决这个问题，要求窗长尽可能大，分辨率才好。</p>
+<ul>
+<li>周期信号的傅里叶变换<br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405143214.png" alt="20220405143214"></li>
+</ul>
+<p>周期信号本来是没有傅里叶变换的,($f(t)\notin L^1(-\infty,\infty)$)。但可以通过主周期得到主周期的傅里叶变换，再得到F级数的系数与主周期的F变换的关系，从而得到完整周期的F变换。其傅里叶变换是一系列冲激串。</p>
+<p>–F级数是F变换的特例</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405145155.png" alt="20220405145155"><br>只有有限长信号或其延拓成的周期信号才有傅里叶级数，$F_n$表明在某个频点有确定的信号强度，信号强度的密度对应着冲激，即傅里叶变换。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405143921.png" alt="20220405143921"></p>
+<ul>
+<li>高斯对高斯，冲激对冲激<br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogsfc3cfe278c4f8276e110e6041c2865c.jpg" alt="fc3cfe278c4f8276e110e6041c2865c"></li>
+</ul>
+<h1 id="五、离散信号傅里叶变换"><a href="#五、离散信号傅里叶变换" class="headerlink" title="五、离散信号傅里叶变换"></a>五、离散信号傅里叶变换</h1><ul>
+<li>离散信号的频率<br>在离散信号中，w和$w+2\pi k$不可区分，因为只看离散点n(整数)的值而非连续的t，如$sin((2\pi k+w)n+\phi)&#x3D;sin(wn+\phi)$。所以角频率主值取$[-\pi,\pi]$或$[0,2\pi]$</li>
+</ul>
+<p>注意，在离散信号中，$\pi$为最高频，0和$2\pi$为最低频。(0和$2\pi$不可区分)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220405214002.png" alt="20220405214002"></p>
+<ul>
+<li>正弦离散信号的周期<br>$x[n]&#x3D;cos(w_0n+\phi)$,令$x[n+N]&#x3D;x[n]$，则周期$N&#x3D;\frac{2\pi}{w_0}k$,k取令N为整数的最小整数</li>
+</ul>
+<p>注意：角频率越大，周期越小的结论不再成立</p>
+<p>以N为周期的离散信号中，可区分的正弦频率数目只有N个</p>
+<p>$$w_k&#x3D;\frac{2\pi}{N}k,k&#x3D;0,1,…,N-1$$</p>
+<ul>
+<li>离散信号的傅里叶级数DFS</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs38ee03c7b886fdcef9aad2a10b92634.jpg" alt="38ee03c7b886fdcef9aad2a10b92634"><br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogsd738cb0e16eae967c4d473847f00da5.jpg" alt="d738cb0e16eae967c4d473847f00da5"></p>
+<ul>
+<li>DTFT</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>信号与系统学习笔记（一）</p><p><a href="https://sx-zhang.top/2022/04/05/信号与系统学习笔记（一）/">https://sx-zhang.top/2022/04/05/信号与系统学习笔记（一）/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Shixuan Zhang</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2022-04-05</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2022-04-09</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Signal-and-System/">Signal and System</a><a class="link-muted mr-2" rel="tag" href="/tags/FFT/">FFT</a></div><div class="notification is-danger">You need to set <code>install_url</code> to use ShareThis. Please set it in <code>_config.yml</code>.</div></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/04/08/%E5%A6%82%E4%BD%95%E4%B8%AA%E6%80%A7%E5%8C%96%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">如何个性化个人博客</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/04/04/%E7%94%A8HEXO%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"><span class="level-item">用HEXO从零开始搭建个人博客</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div class="notification is-danger">You forgot to set the <code>shortname</code> for Disqus. Please set it in <code>_config.yml</code>.</div></div></div></div><!--!--><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/mylogo.jpg" alt="Hexo" height="28"></a><p class="is-size-7"><span>&copy; 2022 Shixuan Zhang</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
