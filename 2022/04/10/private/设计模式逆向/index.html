@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>设计模式逆向 - sx-zhang</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="sx-zhang"><meta name="msapplication-TileImage" content="/img/mylogo.jpg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="sx-zhang"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="设计模式的逆向特征"><meta property="og:type" content="blog"><meta property="og:title" content="设计模式逆向"><meta property="og:url" content="https://sx-zhang.top/2022/04/10/private/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E9%80%86%E5%90%91/"><meta property="og:site_name" content="sx-zhang"><meta property="og:description" content="设计模式的逆向特征"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504114415.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504120234.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504121338.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504122033.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504123508.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504153132.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504153800.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504184629.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504161123.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504191701.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504193833.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504194058.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504234255.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504234546.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504234736.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504235143.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504235010.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504235207.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505000612.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505000217.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505001240.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505002300.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505002917.png"><meta property="og:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505003116.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/8U2lCNdivGFnZOT.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/iAHdsGeCNR93DS1.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/ITNE2RDnSjiHyqd.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/9ngz5NtJlBoIU1f.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/XxnqQKh7GctFeDJ.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/hoSiwX7tkWZNcG8.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/v87gM5womQaKVnR.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/IwnXKqiZzcjrTFM.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/9rIoqLVgGeS4YPm.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/Ofw6RCMq2E3xSlo.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/NDdB21tOaxhwV84.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/7REzTJGWBUFt1yw.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/eq9RiocuwVjsMIg.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/95MfPKOZISJ4HQo.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/yn4632JvpIfgRaD.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/RKZofGWDHwpkLv4.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/K2pc7HPfgXNeRvz.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/E94VWXBYF7ZNu3f.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/xjCpqLinteTVmBZ.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/PkL4nfEqmNaDo2U.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/1jTLxslrcNqdaI3.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/jRnktLsJHzG64Xc.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/iv5d6gKy1mUYHfR.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/bxhzVS7F9ZdA6en.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/a5YMyW6LoFzKqZe.png"><meta property="og:image" content="https://s2.loli.net/2022/05/10/Vh1c4SsnuUCN39P.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/eFxjys91uTDn2M4.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/HcjZ8FlyiRW5EDf.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/IY4Xv8uHr5ClAZb.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/Pog2GT15ZVk86pb.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/aYUICgX8pGytmbH.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/zWLGfapwB2oZctJ.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/rMifneWLXRc6uSN.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/IyETYtwpbMx84Pj.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/h6tCsKPAzpVXawc.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/4kad37Ecwz2bXgB.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/PacjC6oKZbTe23I.png"><meta property="og:image" content="https://s2.loli.net/2022/05/05/GFHBkrDd5hRVxAv.png"><meta property="article:published_time" content="2022-04-10T08:26:17.000Z"><meta property="article:modified_time" content="2022-05-10T02:09:54.822Z"><meta property="article:author" content="Shixuan Zhang"><meta property="article:tag" content="security"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504114415.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://sx-zhang.top/2022/04/10/private/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E9%80%86%E5%90%91/"},"headline":"设计模式逆向","image":["https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504114415.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504120234.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504121338.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504122033.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504123508.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504153132.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504153800.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504184629.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504161123.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504191701.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504193833.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504194058.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504234255.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504234546.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504234736.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504235143.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504235010.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504235207.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505000612.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505000217.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505001240.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505002300.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505002917.png","https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505003116.png","https://s2.loli.net/2022/05/05/8U2lCNdivGFnZOT.png","https://s2.loli.net/2022/05/05/iAHdsGeCNR93DS1.png","https://s2.loli.net/2022/05/05/ITNE2RDnSjiHyqd.png","https://s2.loli.net/2022/05/05/9ngz5NtJlBoIU1f.png","https://s2.loli.net/2022/05/05/XxnqQKh7GctFeDJ.png","https://s2.loli.net/2022/05/05/hoSiwX7tkWZNcG8.png","https://s2.loli.net/2022/05/05/v87gM5womQaKVnR.png","https://s2.loli.net/2022/05/05/IwnXKqiZzcjrTFM.png","https://s2.loli.net/2022/05/05/9rIoqLVgGeS4YPm.png","https://s2.loli.net/2022/05/05/Ofw6RCMq2E3xSlo.png","https://s2.loli.net/2022/05/05/NDdB21tOaxhwV84.png","https://s2.loli.net/2022/05/05/7REzTJGWBUFt1yw.png","https://s2.loli.net/2022/05/05/eq9RiocuwVjsMIg.png","https://s2.loli.net/2022/05/05/95MfPKOZISJ4HQo.png","https://s2.loli.net/2022/05/05/yn4632JvpIfgRaD.png","https://s2.loli.net/2022/05/05/RKZofGWDHwpkLv4.png","https://s2.loli.net/2022/05/05/K2pc7HPfgXNeRvz.png","https://s2.loli.net/2022/05/05/E94VWXBYF7ZNu3f.png","https://s2.loli.net/2022/05/05/xjCpqLinteTVmBZ.png","https://s2.loli.net/2022/05/05/PkL4nfEqmNaDo2U.png","https://s2.loli.net/2022/05/05/1jTLxslrcNqdaI3.png","https://s2.loli.net/2022/05/05/jRnktLsJHzG64Xc.png","https://s2.loli.net/2022/05/05/iv5d6gKy1mUYHfR.png","https://s2.loli.net/2022/05/05/bxhzVS7F9ZdA6en.png","https://s2.loli.net/2022/05/05/a5YMyW6LoFzKqZe.png","https://s2.loli.net/2022/05/10/Vh1c4SsnuUCN39P.png","https://s2.loli.net/2022/05/05/eFxjys91uTDn2M4.png","https://s2.loli.net/2022/05/05/HcjZ8FlyiRW5EDf.png","https://s2.loli.net/2022/05/05/IY4Xv8uHr5ClAZb.png","https://s2.loli.net/2022/05/05/Pog2GT15ZVk86pb.png","https://s2.loli.net/2022/05/05/aYUICgX8pGytmbH.png","https://s2.loli.net/2022/05/05/zWLGfapwB2oZctJ.png","https://s2.loli.net/2022/05/05/rMifneWLXRc6uSN.png","https://s2.loli.net/2022/05/05/IyETYtwpbMx84Pj.png","https://s2.loli.net/2022/05/05/h6tCsKPAzpVXawc.png","https://s2.loli.net/2022/05/05/4kad37Ecwz2bXgB.png","https://s2.loli.net/2022/05/05/PacjC6oKZbTe23I.png","https://s2.loli.net/2022/05/05/GFHBkrDd5hRVxAv.png"],"datePublished":"2022-04-10T08:26:17.000Z","dateModified":"2022-05-10T02:09:54.822Z","author":{"@type":"Person","name":"Shixuan Zhang"},"publisher":{"@type":"Organization","name":"sx-zhang","logo":{"@type":"ImageObject","url":"https://sx-zhang.top/img/mylogo.jpg"}},"description":"设计模式的逆向特征"}</script><link rel="canonical" href="https://sx-zhang.top/2022/04/10/private/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E9%80%86%E5%90%91/"><link rel="icon" href="/img/mylogo.jpg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oxanium:wght@300;400;600&amp;family=Roboto+Mono"><link rel="stylesheet" href="/css/cyberpunk.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.1.0"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/mylogo.jpg" alt="sx-zhang" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">文章</a><a class="navbar-item" href="/categories">目录</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/zhangsx19"><i class="fab fa-github"></i></a><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-04-10T08:26:17.000Z" title="2022/4/10 16:26:17">2022-04-10</time></span><span class="level-item">Updated&nbsp;<time dateTime="2022-05-10T02:09:54.822Z" title="2022/5/10 10:09:54">2022-05-10</time></span><span class="level-item"><a class="link-muted" href="/categories/CS/">CS</a><span> / </span><a class="link-muted" href="/categories/CS/security/">security</a></span><span class="level-item">27 minutes read (About 4088 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">设计模式逆向</h1><div class="content"><p><strong>设计模式的逆向特征</strong></p>
+<span id="more"></span>
+<h1 id="一、创建型"><a href="#一、创建型" class="headerlink" title="一、创建型"></a>一、创建型</h1><h2 id="1-工厂模式"><a href="#1-工厂模式" class="headerlink" title="1.工厂模式"></a>1.工厂模式</h2><ul>
+<li>单继承<br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504114415.png" alt="20220504114415"><br>实际上单继承就是把 baseClass 的成员变量完全copy了一份放在了childClass的前面。</li>
+<li>多继承<br>其实也都是成员变量按顺序往后排</li>
+<li>虚函数与虚表<br>C++实现虚函数的方法是：为每个类对象添加一个隐藏成员，隐藏成员保存了一个指针，这个指针叫虚表指针（vptr），它指向一个虚函数表（virtual function table, vtbl）。在运行时创建对象时，对象的虚表指针将设置为指向合适的虚表。如果该对象调用一个虚函数，则通过在该对象的虚表中进行查询来选择正确的函数。<br>每个类使用一个虚函数表，每个类对象用一个虚表指针。</li>
+</ul>
+<p>对于包含虚函数的类，必须将一个虚表指针作为类中的第一个字段。在计算对象的总大小时，也必须考虑到虚表指针。这种情况在使用new操作符动态分配对象时最为明显，这时，传递给new的大小值不仅包括类（以及任何超类）中的所有显式声明的字段占用的空间，而且包括虚表指针所需的任何空间</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504120234.png" alt="20220504120234"><br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504121338.png" alt="20220504121338"></p>
+<ul>
+<li>this指针<br>this可以看成是传递到所有非静态成员函数的第一个隐藏参数,Microsoft Visual C++利用thiscall调用约定，并将this传递到ECX寄存器中。<br>从逆向工程的角度看，在调用函数之前，将一个地址转移到ECX寄存器中可能意味着两件事情。首先，该文件使用Visual C++编译；其次，该函数是一个成员函数。如果同一个地址被传递给两个或更多函数，我们可以得到结论，这些函数全都属于同一个类层次结构。<br>如果发现一个函数向其他函数传递this指针，则这些函数可能和传递this的函数属于同一个类。</li>
+</ul>
+<p>纯虚函数的标志</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504122033.png" alt="20220504122033"></p>
+<p>main()用到AppleFactory 所以data段不会出现AppleFactory类</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504123508.png" alt="20220504123508"></p>
+<h2 id="2-单例模式"><a href="#2-单例模式" class="headerlink" title="2.单例模式"></a>2.单例模式</h2><p>单例模式的构造函数是私有函数，但是在反汇编看不出私有属性。</p>
+<ul>
+<li>类继承权限</li>
+</ul>
+<p>类的继承权限并不会影响子类继承父类子类所拥有的父类的成员变量个数，换句话说，不管父类的成员变量是什么权限，子类都完全拥有一份父类的成员变量的拷贝</p>
+<p>所以只能通过观察其属性成员是static定义的，大概率是单例模式</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504153132.png" alt="20220504153132"></p>
+<p>release模式(静态成员的动态封装类)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504153800.png" alt="20220504153800"></p>
+<h2 id="3-建造者模式"><a href="#3-建造者模式" class="headerlink" title="3.建造者模式"></a>3.建造者模式</h2><p>指导者类里含有一个建造者对象，建造者类里含有一个建造物对象<br>。可以通过看构造函数观察特征<br>另一个特征是director类会按照逻辑顺序依次调用builder类里的函数，如图<br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504184629.png" alt="20220504184629"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504161123.png" alt="20220504161123"></p>
+<h2 id="4-原型模式"><a href="#4-原型模式" class="headerlink" title="4.原型模式"></a>4.原型模式</h2><ul>
+<li>实质就是找拷贝构造<br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504191701.png" alt="20220504191701"></li>
+</ul>
+<p>由此可见调用子类的拷贝构造函数会先调用父类的构造函数，然后在调用当前类的拷贝构造，这里的off_85600就是 vptr ，从虚函数表中也可以看见，子类覆盖了父类的虚函数就会指向子类的虚函数。</p>
+<p>若没有覆盖，表项中依旧是指向父类的函数地址，而且顺序是按照父类的虚函数表顺序排列，子类中父类没有的虚函数会按顺序继续排在后面，不同类的虚函数表其实都是在编译期就已经确定了的，不同类的虚函数表处于临近的内存区域。</p>
+<h1 id="二、创建型"><a href="#二、创建型" class="headerlink" title="二、创建型"></a>二、创建型</h1><h2 id="1-代理模式"><a href="#1-代理模式" class="headerlink" title="1.代理模式"></a>1.代理模式</h2><ul>
+<li>代理类a包含被代理类b的实例，a,b类实现协议类protocol</li>
+<li>代理类a和被代理类b接口相同</li>
+</ul>
+<p>代理类a包含被代理类b的实例</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504193833.png" alt="20220504193833"></p>
+<p>代理类接口的汇编，会发现call了被代理类的接口(实际情况应该会有相同的输入参数)</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504194058.png" alt="20220504194058"></p>
+<h2 id="2-装饰模式"><a href="#2-装饰模式" class="headerlink" title="2.装饰模式"></a>2.装饰模式</h2><ul>
+<li><p>分为若干个具体类和若干个装饰类，都是继承自同一个抽象类。<br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504234255.png" alt="20220504234255"></p>
+</li>
+<li><p>每个装饰类都含有一个抽象类对象</p>
+</li>
+<li><p>每个装饰类都含有与抽象类有相同接口的虚函数，不同于具体类的虚函数是对抽象类的具体实现，装饰类的这个虚函数一定会调用抽象对象的虚函数，同时加上装饰类新增的自定义函数。</p>
+</li>
+</ul>
+<p>具体类对抽象类纯虚函数的实现</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504234546.png" alt="20220504234546"></p>
+<p>装饰类的相同接口，调用了抽象对象(可以是父类指针指向子对象)的虚函数</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504234736.png" alt="20220504234736"><br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504235143.png" alt="20220504235143"></p>
+<p>实现了自定义的装饰</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504235010.png" alt="20220504235010"><br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220504235207.png" alt="20220504235207"></p>
+<h2 id="3-适配器模式"><a href="#3-适配器模式" class="headerlink" title="3.适配器模式"></a>3.适配器模式</h2><ul>
+<li>将一个接口(已有接口类)转换成客户希望的另一个接口(用户接口类)</li>
+<li>适配器类里会有一个已有接口类对象</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505000612.png" alt="20220505000612"></p>
+<ul>
+<li>适配器类的父类是用户接口类(抽象类)</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505000217.png" alt="20220505000217"></p>
+<ul>
+<li>适配器类虚函数是对用户接口类纯虚函数的具体实现，且里面一定会调用已有接口类的函数(且接口一般与该虚函数的接口不同)</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505001240.png" alt="20220505001240"></p>
+<h2 id="4-桥接模式"><a href="#4-桥接模式" class="headerlink" title="4.桥接模式"></a>4.桥接模式</h2><ul>
+<li>将抽象部分与它的实现部分分离,分为桥接类(抽象部分，如car)和实现类(实现部分，如enginee),两个大类各自可有抽象类和具体类。如图，找到了两个抽象类，分别为car和enginee</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505002300.png" alt="20220505002300"></p>
+<ul>
+<li>桥接类的抽象类里含有实现类的抽象类对象<br>通过子类的构造函数找到了抽象类car的构造函数，改名为car::car,注意a2是enginee类强转到int64</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505002917.png" alt="20220505002917"><br><img src="https://cdn.jsdelivr.net/gh/zhangsx19/PicBed/images_for_blogs20220505003116.png" alt="20220505003116"></p>
+<ul>
+<li>且两者纯虚函数接口相同，桥接类的虚函数具体实现一定会调用实现类对象的虚函数</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/8U2lCNdivGFnZOT.png" alt="20220505010523"></p>
+<h2 id="5-组合模式"><a href="#5-组合模式" class="headerlink" title="5.组合模式"></a>5.组合模式</h2><ul>
+<li><p>单个对象和组合对象继承自同个抽象类，接口一致，但实现可能不一致（如返回NULL）<br><img src="https://s2.loli.net/2022/05/05/iAHdsGeCNR93DS1.png" alt="20220505011154"></p>
+</li>
+<li><p>main函数定义的实例是树形对象，对象往往包含类似于装有抽象类对象的list容器</p>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/ITNE2RDnSjiHyqd.png" alt="20220505012644"></p>
+<p>如图，v20是根节点root,v19是子节点Dir,v18是子节点File</p>
+<h2 id="6-外观模式"><a href="#6-外观模式" class="headerlink" title="6.外观模式"></a>6.外观模式</h2><ul>
+<li>外观类中有多个同层次的子系统类</li>
+</ul>
+<p>直接查看Facade的构造函数，如果是系统自动定义的会显示表示出创建的成员对象,但在这里我们是通过new的方式的默认构造函数，所以会出现三行分配空间的代码，比较难读懂</p>
+<p>可以转变思路，直接看Facade的函数，发现dothing函数里调用了三个子系统的dothing函数，说明外观类中有三个子系统类的对象</p>
+<p><img src="https://s2.loli.net/2022/05/05/9ngz5NtJlBoIU1f.png" alt="20220505015659"></p>
+<h2 id="7-享元模式"><a href="#7-享元模式" class="headerlink" title="7.享元模式"></a>7.享元模式</h2><blockquote>
+<blockquote>
+<p>音乐服务根据收费划分出免费用户和会员用户，免费用户只能听部分免费音乐，会员用户可以听全部的音乐，并且可以下载。虽然权限上二者间有一些区别，但是他们所享受的音乐来是自于同一个音乐库，这样所有的音乐都只需要保存一份就可以了。另外如果出现音乐库里没有的音乐时，则需要新增该音乐，然后其他服务也可以享受新增的音乐，相当于享元池或缓存池的功能</p>
+</blockquote>
+</blockquote>
+<p>可以动调，通过创建相同对象来看看享元池是否只保存了一次。或者输入条件相同时查询的是否是同一个对象。</p>
+<p><img src="https://s2.loli.net/2022/05/05/XxnqQKh7GctFeDJ.png" alt="20220505030653"></p>
+<p>可看出数据结构进而推断出享元池的保存形式</p>
+<p><img src="https://s2.loli.net/2022/05/05/hoSiwX7tkWZNcG8.png" alt="20220505030804"></p>
+<h1 id="三、行为型"><a href="#三、行为型" class="headerlink" title="三、行为型"></a>三、行为型</h1><h2 id="1-模板方法模式"><a href="#1-模板方法模式" class="headerlink" title="1.模板方法模式"></a>1.模板方法模式</h2><ul>
+<li>抽象类里有模板函数来决定其他函数的执行顺序和逻辑</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/v87gM5womQaKVnR.png" alt="20220505031426"><br><img src="https://s2.loli.net/2022/05/05/IwnXKqiZzcjrTFM.png" alt="20220505031510"></p>
+<h2 id="2-命令模式"><a href="#2-命令模式" class="headerlink" title="2.命令模式"></a>2.命令模式</h2><blockquote>
+<blockquote>
+<p>一个对象(Car)调用另一个对象(Engine)的过程是：创建目标对象实例；设置调用参数；调用目标对象的方法。如果调用过程较繁琐，或者有多处调用，有必要用一个专门的类对这种调用过程进行封装，即command类</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>虽然有命令排序、批量提交等复杂操作，但本质还是看command类的特征</li>
+<li>command类(抽象类或具体类)一般包含一个要调用的目标对象</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/9rIoqLVgGeS4YPm.png" alt="20220505032458"></p>
+<ul>
+<li>命令的执行函数一定会调用目标对象的方法，一般比较繁琐或调用得比较多</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/Ofw6RCMq2E3xSlo.png" alt="20220505032509"></p>
+<h2 id="3-职责链模式"><a href="#3-职责链模式" class="headerlink" title="3.职责链模式"></a>3.职责链模式</h2><ul>
+<li>子类完全平等，即哪个都有可能是下一个事件，即所有类都会有一个设置下一个处理单元的函数，(可能在抽象类实现然后继承抽象类)且参数必须是抽象类</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/NDdB21tOaxhwV84.png" alt="20220505033539"><br><img src="https://s2.loli.net/2022/05/05/7REzTJGWBUFt1yw.png" alt="20220505033608"></p>
+<ul>
+<li>一般抽象类或子类会有一个抽象类对象，来作为下一个处理单元</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/eq9RiocuwVjsMIg.png" alt="20220505033635"></p>
+<ul>
+<li>子类的执行函数Handle()里会调用下一个处理单元的执行函数,即调用了相同的函数(除非恰好到了最后一个任务，下一个是结束任务NULL)</li>
+</ul>
+<h2 id="4-策略模式"><a href="#4-策略模式" class="headerlink" title="4.策略模式"></a>4.策略模式</h2><blockquote>
+<blockquote>
+<p>定义一系列算法类，将每一个算法封装起来，并让它们可以相互替换，策略模式让算法独立于使用它的客户而变化</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>要做到可替换性，实现类含有的策略类对象或函数参数一定要是抽象类<br><img src="https://s2.loli.net/2022/05/05/95MfPKOZISJ4HQo.png" alt="20220505034810"></li>
+</ul>
+<h2 id="5-中介者模式"><a href="#5-中介者模式" class="headerlink" title="5.中介者模式"></a>5.中介者模式</h2><blockquote>
+<blockquote>
+<p>中介者模式将一个网状的系统结构变成一个以中介者对象为中心的星形结构，在这个星型结构中，使用中介者对象与其他对象的一对多关系来取代原有对象之间的多对多关系。所有成员通过中介者交互</p>
+</blockquote>
+</blockquote>
+<ul>
+<li>中介者类一般含有多个相同的抽象类或子类，或者是装着这些类的容器等，一般是一对一或一对多</li>
+<li>中介者类的函数方法会用到这些其他类的对象以实现交互</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/yn4632JvpIfgRaD.png" alt="20220505035650"></p>
+<ul>
+<li>其他的对象可能含有一个中介者类对象，且会用到中介者类的函数，并把自身的类作为参数传进去，以实现交互<br><img src="https://s2.loli.net/2022/05/05/RKZofGWDHwpkLv4.png" alt="20220505040147"><br><img src="https://s2.loli.net/2022/05/05/K2pc7HPfgXNeRvz.png" alt="20220505040608"></li>
+</ul>
+<h2 id="6-观察者模式"><a href="#6-观察者模式" class="headerlink" title="6.观察者模式"></a>6.观察者模式</h2><blockquote>
+<blockquote>
+<p>定义对象之间的一种一对多依赖关系，使得每当一个对象状态发生改变时，其相关依赖对象皆得到通知并被自动更新。</p>
+</blockquote>
+</blockquote>
+<ul>
+<li><p>一般通知者类里会有一个装有被通知者类对象的容器<br><img src="https://s2.loli.net/2022/05/05/E94VWXBYF7ZNu3f.png" alt="20220505111851"></p>
+</li>
+<li><p>通知者类的执行函数会遍历容器内的每一个被通知者类对象，并调用被通知者类对象函数(找循环)<br><img src="https://s2.loli.net/2022/05/05/xjCpqLinteTVmBZ.png" alt="20220505112011"></p>
+</li>
+</ul>
+<h2 id="7-备忘录模式"><a href="#7-备忘录模式" class="headerlink" title="7.备忘录模式"></a>7.备忘录模式</h2><ul>
+<li>分为原发器类和存档类，两者的成员大体相同(看构造函数)</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/PkL4nfEqmNaDo2U.png" alt="20220505115025"><br><img src="https://s2.loli.net/2022/05/05/1jTLxslrcNqdaI3.png" alt="20220505115037"></p>
+<ul>
+<li>原发器类含有一个存档函数和读档函数，分别以存档类对象作为返回值和函数参数。且调用的都是原发器类中的函数方法，存档类对象一般只作为参数和返回值</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/jRnktLsJHzG64Xc.png" alt="20220505114541"><br><img src="https://s2.loli.net/2022/05/05/iv5d6gKy1mUYHfR.png" alt="20220505114734"></p>
+<ul>
+<li>main函数多次调用存档-读档函数，且用对象自身上一个状态来调用存档函数，保存到一个存档类对象中，然后修改属性变动到下一个状态。若要读档，则把该存档类对象作为读档函数的参数。</li>
+</ul>
+<h2 id="8-访问者模式"><a href="#8-访问者模式" class="headerlink" title="8.访问者模式"></a>8.访问者模式</h2><ul>
+<li>包含访问者和被访问元素两个主要组成部分，被访问的元素通常具有不同的类型(或不同的子类)</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/bxhzVS7F9ZdA6en.png" alt="20220505123903"></p>
+<ul>
+<li>一般接收的函数参数是抽象类指针，然后根据不同的访问者可以对它们进行不同的访问操作。</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/a5YMyW6LoFzKqZe.png" alt="20220505123943"></p>
+<ul>
+<li>被访问的元素通常是只读的，写操作如下(把某个值写进了某个地址)。或者可以动态调试下，看某个地址存储的内容在程序执行过程中有无改变</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/10/Vh1c4SsnuUCN39P.png" alt="4419dcab47161c17824f5b3297fd03c"></p>
+<h2 id="9-状态模式"><a href="#9-状态模式" class="headerlink" title="9.状态模式"></a>9.状态模式</h2><ul>
+<li>分为对象类和状态类，对象类中含有一个状态类对象，表示对象当前状态，且有设置状态和得到状态等函数方法</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/eFxjys91uTDn2M4.png" alt="20220505141053"><br><img src="https://s2.loli.net/2022/05/05/HcjZ8FlyiRW5EDf.png" alt="20220505141147"><br><img src="https://s2.loli.net/2022/05/05/IY4Xv8uHr5ClAZb.png" alt="20220505141230"></p>
+<ul>
+<li>在状态类里实现对象类具体要做的功能，功能函数以对象类对象作为函数参数。状态类的不同子类表示不同的状态</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/Pog2GT15ZVk86pb.png" alt="20220505141258"></p>
+<ul>
+<li>功能函数会判断对象类对象的当前状态是否应该是该子类状态，如果不是就设置对象类对象的状态为下一个状态，并再次调用下一个状态的功能函数来判断。子类的功能函数高度相似，只是状态之间是环形结构</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/aYUICgX8pGytmbH.png" alt="20220505141346"><br><img src="https://s2.loli.net/2022/05/05/zWLGfapwB2oZctJ.png" alt="20220505141441"><br><img src="https://s2.loli.net/2022/05/05/rMifneWLXRc6uSN.png" alt="20220505141455"></p>
+<h2 id="10-解释器模式"><a href="#10-解释器模式" class="headerlink" title="10.解释器模式"></a>10.解释器模式</h2><ul>
+<li>分为语言类和解释器类，解释器类的子类表示不同的解释方法。</li>
+<li>解释器类的解释函数以语言类对象作为函数参数</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/IyETYtwpbMx84Pj.png" alt="20220505143656"></p>
+<h2 id="11-迭代器模式"><a href="#11-迭代器模式" class="headerlink" title="11.迭代器模式"></a>11.迭代器模式</h2><ul>
+<li>迭代器可理解为指针，迭代器类里存有数组类的对象指针和一个游标表示迭代器当前所指向的位置</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/h6tCsKPAzpVXawc.png" alt="20220505150035"></p>
+<ul>
+<li>数组类类似数据库，函数方法只实现存储和返回数据等功能</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/4kad37Ecwz2bXgB.png" alt="20220505150129"></p>
+<ul>
+<li>迭代器类有Next函数表示游标的移动</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/PacjC6oKZbTe23I.png" alt="20220505150154"></p>
+<ul>
+<li>创建迭代器的函数方法在数组类里</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/05/05/GFHBkrDd5hRVxAv.png" alt="20220505150110"></p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>设计模式逆向</p><p><a href="https://sx-zhang.top/2022/04/10/private/设计模式逆向/">https://sx-zhang.top/2022/04/10/private/设计模式逆向/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Shixuan Zhang</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2022-04-10</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2022-05-10</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/security/">security</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=6250f03420c5f3001916ab7f&amp;product=inline-share-buttons" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2022/04/10/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%B1%BB/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">����ָ����</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/04/10/kali%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/"><span class="level-item">kali虚拟机安装与配置</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">Comments</h3><div id="comment-container"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"><script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+            id: "bf3c5dd5d8d1788dca27a7237fd63865",
+            repo: "gittalk-comments",
+            owner: "zhangsx19",
+            clientID: "58a3f2f97d6428a7b995",
+            clientSecret: "88106c2d09c6d5803d639decb5bc2d0a3b0d443d",
+            admin: ["zhangsx19"],
+            createIssueManually: false,
+            distractionFreeMode: false,
+            perPage: 20,
+            pagerDirection: "last",
+            
+            
+            enableHotKey: true,
+            language: "zh-CN",
+        })
+        gitalk.render('comment-container')</script></div></div></div><!--!--><div class="column column-right is-4-tablet is-4-desktop is-4-widescreen  order-3"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#一、创建型"><span class="level-left"><span class="level-item">一、创建型</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#1-工厂模式"><span class="level-left"><span class="level-item">1.工厂模式</span></span></a></li><li><a class="level is-mobile" href="#2-单例模式"><span class="level-left"><span class="level-item">2.单例模式</span></span></a></li><li><a class="level is-mobile" href="#3-建造者模式"><span class="level-left"><span class="level-item">3.建造者模式</span></span></a></li><li><a class="level is-mobile" href="#4-原型模式"><span class="level-left"><span class="level-item">4.原型模式</span></span></a></li></ul></li><li><a class="level is-mobile" href="#二、创建型"><span class="level-left"><span class="level-item">二、创建型</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#1-代理模式"><span class="level-left"><span class="level-item">1.代理模式</span></span></a></li><li><a class="level is-mobile" href="#2-装饰模式"><span class="level-left"><span class="level-item">2.装饰模式</span></span></a></li><li><a class="level is-mobile" href="#3-适配器模式"><span class="level-left"><span class="level-item">3.适配器模式</span></span></a></li><li><a class="level is-mobile" href="#4-桥接模式"><span class="level-left"><span class="level-item">4.桥接模式</span></span></a></li><li><a class="level is-mobile" href="#5-组合模式"><span class="level-left"><span class="level-item">5.组合模式</span></span></a></li><li><a class="level is-mobile" href="#6-外观模式"><span class="level-left"><span class="level-item">6.外观模式</span></span></a></li><li><a class="level is-mobile" href="#7-享元模式"><span class="level-left"><span class="level-item">7.享元模式</span></span></a></li></ul></li><li><a class="level is-mobile" href="#三、行为型"><span class="level-left"><span class="level-item">三、行为型</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#1-模板方法模式"><span class="level-left"><span class="level-item">1.模板方法模式</span></span></a></li><li><a class="level is-mobile" href="#2-命令模式"><span class="level-left"><span class="level-item">2.命令模式</span></span></a></li><li><a class="level is-mobile" href="#3-职责链模式"><span class="level-left"><span class="level-item">3.职责链模式</span></span></a></li><li><a class="level is-mobile" href="#4-策略模式"><span class="level-left"><span class="level-item">4.策略模式</span></span></a></li><li><a class="level is-mobile" href="#5-中介者模式"><span class="level-left"><span class="level-item">5.中介者模式</span></span></a></li><li><a class="level is-mobile" href="#6-观察者模式"><span class="level-left"><span class="level-item">6.观察者模式</span></span></a></li><li><a class="level is-mobile" href="#7-备忘录模式"><span class="level-left"><span class="level-item">7.备忘录模式</span></span></a></li><li><a class="level is-mobile" href="#8-访问者模式"><span class="level-left"><span class="level-item">8.访问者模式</span></span></a></li><li><a class="level is-mobile" href="#9-状态模式"><span class="level-left"><span class="level-item">9.状态模式</span></span></a></li><li><a class="level is-mobile" href="#10-解释器模式"><span class="level-left"><span class="level-item">10.解释器模式</span></span></a></li><li><a class="level is-mobile" href="#11-迭代器模式"><span class="level-left"><span class="level-item">11.迭代器模式</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/mylogo.jpg" alt="sx-zhang" height="28"></a><p class="is-size-7"><span>&copy; 2022 Shixuan Zhang</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/zhangsx19"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+            'HTML-CSS': {
+                matchFontHeight: false
+            },
+            SVG: {
+                matchFontHeight: false
+            },
+            CommonHTML: {
+                matchFontHeight: false
+            },
+            tex2jax: {
+                inlineMath: [
+                    ['$','$'],
+                    ['\\(','\\)']
+                ]
+            }
+        });</script><script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.9/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
